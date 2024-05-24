@@ -1,9 +1,9 @@
 # Virtual Attendance System using Face Recognition
-![Python](https://img.shields.io/badge/Python-3.x-python)
-![NumPy](https://img.shields.io/badge/NumPy-1.19.3-orange)
-![OpenCV](https://img.shields.io/badge/OpenCV-4.5.1-blue)
-![face_recognition](https://img.shields.io/badge/face--recognition-1.4.0-brown)
-
+![Python](https://img.shields.io/badge/Python-3.10-python)
+![NumPy](https://img.shields.io/badge/NumPy-1.25.2-cyan)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.9-blue)
+![face_recognition](https://img.shields.io/badge/face--recognition-1.3.0-brown)
+![PySpark](https://img.shields.io/badge/Pyspark-3.5.1-orange)
 
 ## Introduction
 
