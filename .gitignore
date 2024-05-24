@@ -1,4 +1,7 @@
 .DS_Store
+.metals
+.scala-build
+.vscode
 transformed_attendance.csv/_SUCCESS
 transformed_attendance.csv/._SUCCESS.crc
 transformed_attendance.csv/.part-00000-f5fd91ed-ca1b-4ed8-a8a0-7808d60419e6-c000.csv.crc
