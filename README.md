@@ -1,4 +1,4 @@
-# Virtual Attendance System using Face Recognition
+# Automated Attendance Tracking and Productivity Analytics using Face Recognition
 ![Python](https://img.shields.io/badge/Python-3.10-python)
 ![NumPy](https://img.shields.io/badge/NumPy-1.25.2-cyan)
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.9-blue)
@@ -7,26 +7,21 @@
 
 ## Introduction
 
-This module is a face recognition and attendance tracking tool that detects faces from a live webcam feed and records attendance in a CSV file if a known face is found. The module uses the `face_recognition` library to perform face detection and recognition, and the `cv2` library to capture webcam input.
+This project is a sophisticated end-to-end solution designed to automate attendance tracking using face recognition and analyze employee productivity. It encompasses three main stages: data ingestion, data transformation, and application in productivity analysis. This tool is particularly useful for environments that require monitoring entry and exit times, such as offices, schools, and conferences.
+
 
 ## Features
-- Real-time face detection and recognition.
-- Attendance logging with timestamps.
-- Filtering out brief appearances (less than 2 seconds) to ensure accurate attendance records.
-- Session tracking to log the first "IN" and the last "OUT" for each person.
+- **Real-time face detection and recognition**: Real-time Face Detection and Recognition: Efficiently identifies and logs known faces from the webcam feed.
+- **Accurate Attendance Logging**: Records attendance with precise timestamps.
+- **Session Tracking**: Logs the "IN"s and "OUT"s for each person per session.
+- **Data Cleaning**: Filters out brief appearances (less than 1 minute) to maintain accurate records.
+- **Comprehensive Data Transformation**: Processes raw attendance data to clean and organize it for further analysis.
+- **Productivity Analysis**: Analyzes attendance data to provide insights into employee productivity.
 
 
 ## Getting Started
 
-The following dependencies need to be installed before running the code:
-
-`numpy`
-`cv2`
-`face_recognition`
-`os`
-`datetime`
-
-## Installation
+### Installation
 
 1. Clone this repository:
    ```bash
@@ -48,7 +43,7 @@ The following dependencies need to be installed before running the code:
    python3 -m pip install -r requirements.txt
    ```
 
-## Execute Program
+### Execute Program
 
 To run the code, simply execute the script in a Python environment. 
    ```bash
@@ -62,54 +57,76 @@ Once the data has been captured successfully, run the data transformation scipt
    python data_transformation.py
    ```
 
-## Database
+Once all the data is ready, we can execute applications built to monitor employee attendance and productivity by running the interactive notebook: `productivity_analytics.ipynb` using either Jupyter or Google Colab or similar tools.
 
-The script uses a directory called 'KnownDB' to store images of known faces for comparison. The name of the image files are used as the name of the person for attendance tracking. The script reads all images from this directory and encodes them for comparison with webcam feed.
+## Stages of the Project
 
-## Attendance Tracking
+## 1. Data Ingestion
 
-The script records attendance in a csv file called 'attendance.csv'. Each row of the file contains the name of the person, their status ("IN" or "OUT"), and the time of attendance. The script filters out consecutive "IN" and "OUT" entries with a gap of 2 seconds or less.
+The initial stage involves capturing attendance data using face recognition. The system uses a webcam to detect and recognize faces in real-time, logging attendance details in a CSV file.
 
-## Data Transformation
+**Key Points**:
 
-A PySpark script is provided to process the raw attendance data. The script:
+- Uses face_recognition and opencv-python libraries.
+- Captures images from a webcam and matches them against a known database of faces.
+- Logs attendance with timestamps in attendance.csv.
+
+
+## 2. Data Transformation
+
+The next stage involves transforming the raw attendance data into a structured format suitable for downstream analysis using PySpark.
+
 - Reads the raw attendance CSV file.
 - Filters out intermittent "IN" and "OUT" entries within 2 seconds.
 - Tracks the first "IN" and last "OUT" for each person.
 - Outputs the cleaned data to a new CSV file.
 
-## Functionality
+## 3. Data Science Use Case: Employee Attendance and Productivity Analysis
 
-The code uses the `cv2` library to capture video frames from the computer's webcam, and the `face_recognition` library to detect faces within these frames. The `face_locations` function from the `face_recognition.api` module is used to detect the coordinates of the bounding boxes around faces within an image, and the `face_encodings` function is used to generate a 128-dimensional encoding for each face. These encodings are used to compare and match the faces in the webcam feed to the known faces in the dataset.
+This stage involves analyzing the transformed attendance data to gain insights into employee productivity.
 
-The module reads the images of the known people from a folder called "KnownDB" and encodes the images using the `findEncodings` function, which applies the `face_encodings` function to each image. The resulting encodings are stored in a variable called `knownFaces`.
+### Objective
+To analyze employee attendance data to gain insights into attendance patterns, productivity, and behavior. This analysis aims to uncover trends, identify anomalies, and provide actionable recommendations to improve productivity and attendance management.
 
-The `while True` loop in the code captures frames from the webcam and resizes them for faster processing. The `face_locations` and `face_encodings` functions are applied to the current frame to detect faces and generate encodings. The `compare_faces` function is then used to compare the encodings of the detected faces to the known faces in the dataset, and the `face_distance` function is used to calculate the distance between the encodings. The face with the smallest distance is considered the best match and its corresponding name is displayed on the screen.
+### Data Processing and Feature Engineering
+- **Data Cleaning**: Remove invalid or incomplete records and handle missing values.
+- **Feature Engineering**: Create features such as total hours worked, number of breaks, late arrivals, and early departures.
+- **Session Tracking**: Identify and track sessions for each employee to log the first "IN" and the last "OUT" of each day.
 
-The `markAttendance` function is used to record the attendance of the recognized person in a CSV file with the current time stamp.
+### Key Metrics
+- **Total Hours Worked**: Calculate the total hours worked by each employee each day.
+- **Late Arrivals**: Identify instances where employees arrived after the designated start time.
+- **Early Departures**: Identify instances where employees left before the designated end time.
+- **Number of Breaks**: Count the number of breaks taken by each employee each day.
+- **Long Breaks**: Identify breaks that are longer than a specified duration.
 
-## Usage
+### Statistical Analysis
+- **Descriptive Statistics**: Summarize key metrics such as mean, median, and standard deviation.
+- **Correlation Analysis**: Examine the relationship between the number of breaks and total hours worked.
 
-   1. Place the images of known faces in a folder named "KnownDB" in the same directory as the script.
-   2. Allow the script to access the webcam when prompted
-   3. The script will run in a loop and display the video feed from the webcam on the screen. If a known face is detected, the name of the person will be displayed on the screen and recorded in the "attendance.csv" file.
-   4. Press 'q' on the keyboard to quit the script.
+#### Hypothesis Testing:
+1. **ANOVA**: Compare the mean number of late arrivals and early departures across different employees.
+2. **T-test**: Compare the mean total hours worked before and after implementing any policy changes.
+3. **Shapiro-Wilk Test**: Test for normality of the distribution of arrival times.
 
-## Customization
+### Machine Learning
+Predictive Modeling: Build models to predict employee productivity based on attendance patterns.
+Anomaly Detection: Identify unusual attendance patterns that may indicate issues such as absenteeism or lack of productivity.
 
-The `scaleFactor` variable can be adjusted to change the size of the video feed displayed on the screen.
-The format of the date and time recorded in the "attendance.csv" file can be changed in the `markAttendance` function.
-Additional functionality can be added to the script by modifying the `markAttendance` function.
+### Visualization
+- **Time Series Analysis**: Visualize attendance patterns over time.
+- **Heatmaps**: Show the frequency of late arrivals and early departures.
+- **Box Plots**: Display the distribution of total hours worked and breaks taken.
+Applications
+- **HR Management**: Use insights from the analysis to improve attendance policies and manage employee performance.
+- **Employee Engagement**: Identify employees who may need support or intervention to improve attendance.
+- **Productivity Optimization**: Develop strategies to maximize productivity based on attendance data.
+
 
 ## Limitations
 Some limitations of this module include:
 
 - The module relies on accurate encoding of known faces, thus if the images of known faces in the "KnownDB" folder are of low quality or do not accurately represent the person, the module may not correctly match and record attendance.
-- The module requires a webcam to function and cannot be used with pre-recorded video or images.
-- The module uses the 'attendance.csv' file to record attendance, if the file is not present or is not in the correct format, the module will not function properly.
-- The module uses the system time to record attendance, which must be accurate.
-- New users must be added by placing their images in the KnownDB folder and rerunning the module.
-- The module is not resistant to spoofing/fake faces.
 - The module can only detect people in the knownDB folder, it is not able to detect unknown people.
 
 ## Conclusion
