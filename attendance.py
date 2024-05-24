@@ -52,7 +52,7 @@ attendance_status = {name: "OUT" for name in classnames}
 
 # Function to mark attendance in a CSV file
 def markAttendance(name, status):
-    with open("attendance.csv", "a") as f:
+    with open("data/ingestion/attendance.csv", "a") as f:
         now = datetime.now()
         dateStr = now.strftime("%Y-%m-%d %H:%M:%S")
         f.writelines(f"\n{name},{status},{dateStr}")
