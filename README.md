@@ -124,9 +124,7 @@ Applications
 
   #### Please Find the visualization dashboard:
 
-<h3 align="center">
-<a href="[https://www.linkedin.com/in/ketan-ksagar/](https://public.tableau.com/views/AttendanceAnalysis_17176390759380/AnalysisofAttendance?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)" target="_blank" rel="noreferrer">Click here for dashboard</a> 👋
-</h3>
+![Tableau Dashboard]([https://img.shields.io/badge/NumPy-1.25.2-cyan](https://public.tableau.com/views/AttendanceAnalysis_17176390759380/AnalysisofAttendance?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link))
   
 
 ## Limitations
