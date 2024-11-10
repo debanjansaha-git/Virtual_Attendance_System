@@ -122,6 +122,12 @@ Applications
 - **Employee Engagement**: Identify employees who may need support or intervention to improve attendance.
 - **Productivity Optimization**: Develop strategies to maximize productivity based on attendance data.
 
+  #### Please Find the visualization dashboard:
+
+<h3 align="center">
+<a href="[https://www.linkedin.com/in/ketan-ksagar/](https://public.tableau.com/views/AttendanceAnalysis_17176390759380/AnalysisofAttendance?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)" target="_blank" rel="noreferrer">Click here for dashboard</a> 👋
+</h3>
+  
 
 ## Limitations
 Some limitations of this module include:
