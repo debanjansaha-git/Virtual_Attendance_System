@@ -124,7 +124,7 @@ Applications
 
   #### Please Find the visualization dashboard:
 
-![Tableau Dashboard]([https://img.shields.io/badge/NumPy-1.25.2-cyan](https://public.tableau.com/views/AttendanceAnalysis_17176390759380/AnalysisofAttendance?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link))
+https://public.tableau.com/views/AttendanceAnalysis_17176390759380/AnalysisofAttendance?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
   
 
 ## Limitations
